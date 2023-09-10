@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$('.time-block').each(function (index, value) {
+$('.time-block').each(function (index, timeBlock) {
   const plannedHour = value.getAttribute('data-hour');
   const actualHour = days().hour();
   const schedule = {
@@ -10,15 +10,15 @@ $('.time-block').each(function (index, value) {
   };
 
   if (plannedHour > actualHour) {
-    value.classList.add('future')
+    timeBlock.classList.add('future')
   } else if (plannedHour < actualHour) {
-    value.classList.add('past')
+    timeBlock.classList.add('past')
   } else {
-    value.classList.add('present')
+    timeBlock.classList.add('present')
   }
 
   // add event listener
-  value.addEventListener('click', function (event){
+  timeBlock.addEventListener('click', function (event){
     if(event.target.matches('button')) {
       console.log("clicked button");
       console.log(event.target)
