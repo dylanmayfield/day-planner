@@ -1,7 +1,48 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+$('.time-block').each(function (index, value) {
+  const plannedHour = value.getAttribute('data-hour');
+  const actualHour = days().hour();
+  const schedule = {
+    hour: hour,
+    text: text
+  };
+
+  if (plannedHour > actualHour) {
+    value.classList.add('future')
+  } else if (plannedHour < actualHour) {
+    value.classList.add('past')
+  } else {
+    value.classList.add('present')
+  }
+
+  // add event listener
+  value.addEventListener('click', function (event){
+    if(event.target.matches('button')) {
+      console.log("clicked button");
+      console.log(event.target)
+    }
+  });
+
+  function saveSchedule(event) {
+    const hour = event.target.parentElement.getAttribute('data-hour');
+    const text = event.target.parentElement.queryselector('text-area');
+    console.log('hour', hour)
+    console.log('text', text)
+
+    if (localStorage.getItem('schedules')) {
+      const schedules = JSON.parse(localStorage.getItem('schedules'));
+      schedules.push(schedule);
+      localStorage.setItem('schedules', JSON.stringify('schedules'));
+    } else {
+      const schedules = []
+      schedules.push(schedule);
+      localStorage.setItem('schedules',JSON.stringify(schedules));
+    }
+  }
+
+  $('#currentDay').text(currentDay.format('dddd, MMMM D'))
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
