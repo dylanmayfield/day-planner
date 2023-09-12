@@ -6,4 +6,7 @@ This day planner app functions in a way that you can schedule your day in an eff
 
 ## Screenshot of page
 
+![Screenshot-of-day-planner](images/Screenshot-day-planner.png)
+
+# Link to deployed page
 
