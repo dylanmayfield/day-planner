@@ -8,5 +8,6 @@ This day planner app functions in a way that you can schedule your day in an eff
 
 ![Screenshot-of-day-planner](images/Screenshot-day-planner.png)
 
-# Link to deployed page
+## Link to deployed page
 
+https://dylanmayfield.github.io/day-planner/
